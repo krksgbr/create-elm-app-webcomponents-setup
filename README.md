@@ -1,4 +1,9 @@
 Example setup of elm + webcomponents.
+Relevant files from other repos:
+- https://github.com/webcomponents/webcomponentsjs/blob/master/custom-elements-es5-adapter.js
+- https://github.com/webpack-contrib/polymer-webpack-loader/blob/master/demo/src/index.ejs
+
+
 This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
 
 Below you will find some information on how to perform basic tasks.

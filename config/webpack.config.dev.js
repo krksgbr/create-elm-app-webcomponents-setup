@@ -201,7 +201,7 @@ module.exports = {
     new InterpolateHtmlPlugin(env.raw),
 
     new HtmlWebpackPlugin({
-      inject: true,
+      inject: false,
       template: paths.appHtml
     }),
 

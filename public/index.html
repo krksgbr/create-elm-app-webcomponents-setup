@@ -17,6 +17,34 @@
     <noscript>
         You need to enable JavaScript to run this app.
     </noscript>
+     <!--
+      Feature detect Custom Elements support. If the browser DOES support Custom
+      Elements then we need to load the custom-elements-es5-adapter because
+      our project code has been transpiled from ES2015 to ES5 and native Custom
+      Elements expect elements will be registered as classes.
+    -->
+    <div id="ce-es5-shim">
+      <script type="text/javascript">
+        if (!window.customElements) {
+          console.log("removing shim");
+          var ceShimContainer = document.querySelector('#ce-es5-shim');
+          ceShimContainer.parentElement.removeChild(ceShimContainer);
+        }
+      </script>
+      <script type="text/javascript" src="/custom-elements-es5-adapter.js"></script>
+    </div> 
+    <script>
+      (function() {
+        document.addEventListener('WebComponentsReady', function componentsReady() {
+          document.removeEventListener('WebComponentsReady', componentsReady, false);
+          var script = document.createElement('script');
+          script.src = '<%= htmlWebpackPlugin.files.js[0] %>';
+          var refScript = document.getElementsByTagName('script')[0];
+          refScript.parentNode.insertBefore(script, refScript);
+        }, false);
+      })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.js"></script>
     <div id="root"></div>
 </body>
 </html>
